@@ -1,0 +1,6 @@
+framework module Pods_CameraMap {
+  umbrella header "Pods-CameraMap-umbrella.h"
+
+  export *
+  module * { export * }
+}
