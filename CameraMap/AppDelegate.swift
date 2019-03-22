@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         WeatherService.cameraCityList.append(city3)
         WeatherService.cameraCityList.append(city4)
         
+        
+        
 //        window = UIWindow(frame: UIScreen.main.bounds)
 //
 //        let nav = UINavigationController()

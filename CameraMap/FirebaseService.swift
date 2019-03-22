@@ -11,7 +11,11 @@ import Firebase
 import SwiftyJSON
 
 class FirebaseService {
-    static var cameraData: [FirebaseData] = []
+    static var cameraData: [FirebaseData] = [] {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sendCamera"), object: nil)
+        }
+    }
     static var camerasJSON: JSON = []
     
     
@@ -32,7 +36,7 @@ class FirebaseService {
                 let camData: FirebaseData = FirebaseData(json: camerasJSON)
                 
                 FirebaseService.cameraData.append(camData)
-                print(cameraData)
+                print(camData.name)
                 
                 
                 }

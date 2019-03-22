@@ -37,8 +37,8 @@ class DetailViewController: UIViewController {
     @objc func send_object2(_ status: Notification) {
      
         DispatchQueue.main.async {
-            
-           self.weatherLabel.text = String(WeatherService.getWeatherFromName(city: self.currentCity)!.temp)
+            guard let temp = WeatherService.getWeatherFromName(city: self.currentCity)?.temp else {return}
+            self.weatherLabel.text = String(temp)
         }
         
         
@@ -53,9 +53,9 @@ class DetailViewController: UIViewController {
       
         
         var url: String = ""
-        for camera in WeatherService.cameraCityList {
+        for camera in FirebaseService.cameraData {
             if camera.name == currentCity {
-                url = camera.cameraURL
+                url = camera.url
             }
         }
         let videoURL = URL(string: url)

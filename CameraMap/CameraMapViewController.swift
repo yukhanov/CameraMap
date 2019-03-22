@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-
+import Firebase
 
 class CameraMapViewController: UIViewController, MKMapViewDelegate {
     
@@ -18,6 +18,8 @@ class CameraMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
 
         mapView.bounds = view.bounds
@@ -29,15 +31,25 @@ class CameraMapViewController: UIViewController, MKMapViewDelegate {
         
 
         mapView.delegate = self
-        createAnnotations()
         
         FirebaseService.getCameraData()
-
-       
-            
+        print("viewDidLoad")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(send_object2), name: NSNotification.Name(rawValue: "sendCamera"), object: nil)
+        
         
     }
     
+    @objc func send_object2(_ status: Notification) {
+        
+        DispatchQueue.main.async {
+            print("Notification")
+            
+            self.createAnnotations()
+        }
+        
+        
+    }
   
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -51,9 +63,6 @@ class CameraMapViewController: UIViewController, MKMapViewDelegate {
         }
         
         annotationView?.pinTintColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-        
-    
-        
         annotationView?.canShowCallout = false
         let showUserProfileGester = UITapGestureRecognizer()
         showUserProfileGester.addTarget(self, action:  #selector(showUserProfileMethod))
@@ -86,9 +95,10 @@ class CameraMapViewController: UIViewController, MKMapViewDelegate {
 //    }
 
     func createAnnotations() {
-        for camera in WeatherService.cameraCityList {
+        for camera in FirebaseService.cameraData {
             let annotations = MKPointAnnotation()
             annotations.title = camera.name
+            print(camera.name)
             annotations.coordinate = CLLocationCoordinate2D(latitude: camera.lat , longitude: camera.lon )
             mapView.addAnnotation(annotations)
             

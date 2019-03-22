@@ -22,7 +22,7 @@ class WeatherService {
     static var cameraCityList: [CameraCity] = [] {
         
         didSet {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sendCamera"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sendCamera1"), object: nil)
         }
     }
     
