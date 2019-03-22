@@ -17,15 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let city1: CameraCity = CameraCity(name: "Petergof", lat: 59.88, lon: 29.91, cameraURL: "https://media-01.obit.ru/peterhof/index.m3u8")
-        let city2: CameraCity = CameraCity(name: "Changgu", lat: -8.65, lon: 115.12, cameraURL: "http://158.69.241.131:1935/cam2/cam2.stream/chunklist_w1237951149.m3u8")
-        let city3: CameraCity = CameraCity(name: "London", lat: 25.19, lon: 55.27, cameraURL: "https://hddn01.skylinewebcams.com/live.m3u8?a=ae7k8uabnmnuch0vapuugnqes5")
-        let city4: CameraCity = CameraCity(name: "San-Diego", lat: 32.77, lon: -117.25, cameraURL: "https://edge04.hdontap.com/ingest03-hd1/catamaran-ptz_evanshotels.stream/playlist.m3u8")
-        
-        WeatherService.cameraCityList.append(city1)
-        WeatherService.cameraCityList.append(city2)
-        WeatherService.cameraCityList.append(city3)
-        WeatherService.cameraCityList.append(city4)
+//        let city1: CameraCity = CameraCity(name: "Petergof", lat: 59.88, lon: 29.91, cameraURL: "https://media-01.obit.ru/peterhof/index.m3u8")
+//        let city2: CameraCity = CameraCity(name: "Changgu", lat: -8.65, lon: 115.12, cameraURL: "http://158.69.241.131:1935/cam2/cam2.stream/chunklist_w1237951149.m3u8")
+//        let city3: CameraCity = CameraCity(name: "London", lat: 25.19, lon: 55.27, cameraURL: "https://hddn01.skylinewebcams.com/live.m3u8?a=ae7k8uabnmnuch0vapuugnqes5")
+//        let city4: CameraCity = CameraCity(name: "San-Diego", lat: 32.77, lon: -117.25, cameraURL: "https://edge04.hdontap.com/ingest03-hd1/catamaran-ptz_evanshotels.stream/playlist.m3u8")
+//        
+//        WeatherService.cameraCityList.append(city1)
+//        WeatherService.cameraCityList.append(city2)
+//        WeatherService.cameraCityList.append(city3)
+//        WeatherService.cameraCityList.append(city4)
         
         
         
@@ -37,11 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        window?.rootViewController = nav
 //        window?.makeKeyAndVisible()
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let nav1 = UINavigationController()
-        let mainView = CameraMapViewController(nibName: nil, bundle: nil) //ViewController = Name of your controller
-        nav1.viewControllers = [mainView]
-        self.window!.rootViewController = nav1
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let mainController = CameraMapViewController() as UIViewController
+        let navigationController = UINavigationController(rootViewController: mainController)
+        navigationController.navigationBar.isTranslucent = false
+        self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
 
         //FirebaseApp.configure()

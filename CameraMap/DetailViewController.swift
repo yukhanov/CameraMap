@@ -15,9 +15,9 @@ class DetailViewController: UIViewController {
 
     var weatherLabel = UILabel()
     var timeLabel = UILabel()
+    var backButton = UIButton()
     
     var currentCity: String = ""
-    var heightList: [CGFloat] = []
     let instets: CGFloat = 20
     
    
@@ -25,9 +25,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-        
-        
+        self.title = currentCity
+
         WeatherService.getWeatherData(city: currentCity)
         
         NotificationCenter.default.addObserver(self, selector: #selector(send_object2), name: NSNotification.Name(rawValue: "send"), object: nil)
@@ -37,8 +36,10 @@ class DetailViewController: UIViewController {
     @objc func send_object2(_ status: Notification) {
      
         DispatchQueue.main.async {
-            guard let temp = WeatherService.getWeatherFromName(city: self.currentCity)?.temp else {return}
+            self.weatherLabel.text = ".."
+            guard let temp = WeatherService.getWeatherFromName(city: self.currentCity)?.temp else { return }
             self.weatherLabel.text = String(temp)
+            self.weatherLabelFrame()
         }
         
         
@@ -75,12 +76,7 @@ class DetailViewController: UIViewController {
         
         weatherLabel.frame.size.height = 30
         weatherLabel.frame.size.width = 70
-        weatherLabel.frame.origin.y = instets
-        weatherLabel.frame.origin.x = view.frame.maxX - instets - 20
-        
-//        nil in font
-//        weaterLabelFrame()
-        weatherLabel.textColor = UIColor.green
+        weatherLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         view.addSubview(weatherLabel)
         
         timeLabel.frame.size.height = 30
@@ -89,17 +85,29 @@ class DetailViewController: UIViewController {
         timeLabel.frame.origin.x = view.frame.maxX - instets - 200
         view.addSubview(timeLabel)
         
-        
+ 
+        backButton.setTitle("Назад", for: .normal)
+        backButton.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        backButton.frame = CGRect(x: 10, y: 40, width: 60, height: 30)
+        backButton.addTarget(self, action: #selector(pressedAction(_:)), for: .touchUpInside)
+        view.addSubview(backButton)
     }
-    func weaterLabelFrame() {
+    
+    @objc func pressedAction(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func weatherLabelFrame() {
         // получаем размер текста, передавая сам текст и шрифт
-        let weaterLabelSize = getLabelSize(text: weatherLabel.text!, font: weatherLabel.font)
+        let weatherLabelSize = getLabelSize(text: weatherLabel.text!, font: weatherLabel.font)
         // рассчитываем координату по оси Х
-        let weaterLabelX = (view.bounds.width - weaterLabelSize.width) / 2
+        let weatherLabelX = (view.bounds.width - weatherLabelSize.width) / 2
         // получаем точку верхнего левого угла надписи
-        let weaterLabelOrigin =  CGPoint(x: weaterLabelX, y: instets)
+        let weatherLabelOrigin =  CGPoint(x: weatherLabelX, y: instets * 2)
         // получаем фрейм и устанавливаем его UILabel
-        weatherLabel.frame = CGRect(origin: weaterLabelOrigin, size: weaterLabelSize)
+        weatherLabel.frame = CGRect(origin: weatherLabelOrigin, size: weatherLabelSize)
     }
     func getLabelSize(text: String, font: UIFont) -> CGSize {
         // определяем максимальную ширину текста - это ширина ячейки минус отступы слева и справа
