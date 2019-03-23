@@ -14,11 +14,14 @@ class FirebaseData {
     var lat: Double
     var lon: Double
     var url: String
+    let videoCode: String
     
     init(json: JSON) {
         self.name = json["name"].stringValue
         self.lat = json["lat"].doubleValue
         self.lon = json["lon"].doubleValue
         self.url = json["cameraURL"].stringValue
+        self.videoCode = json["videoCode"].stringValue
+        
     }
 }

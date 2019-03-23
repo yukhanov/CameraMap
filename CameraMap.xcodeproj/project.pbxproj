@@ -22,6 +22,7 @@
 		B8A129F7224353FF00F4132D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8A129F6224353FF00F4132D /* GoogleService-Info.plist */; };
 		B8A129F92243553A00F4132D /* FirebaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A129F82243553A00F4132D /* FirebaseData.swift */; };
 		B8A129FB2243554D00F4132D /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A129FA2243554C00F4132D /* FirebaseService.swift */; };
+		B8A129FD224604C300F4132D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A129FC224604C300F4132D /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		B8A129F6224353FF00F4132D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8A129F82243553A00F4132D /* FirebaseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseData.swift; sourceTree = "<group>"; };
 		B8A129FA2243554C00F4132D /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		B8A129FC224604C300F4132D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CB00BAF1DC1FDB7B6EF53F45 /* Pods_CameraMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CameraMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				B87E33BD2237DA2B0063DE43 /* AppDelegate.swift */,
 				B87E33CF2237DACB0063DE43 /* CameraMapViewController.swift */,
 				B87E33D42237DACB0063DE43 /* DetailViewController.swift */,
+				B8A129FC224604C300F4132D /* WebViewController.swift */,
 				B87E33D72237DACC0063DE43 /* WeatherService.swift */,
 				B87E33D02237DACB0063DE43 /* WeatherData.swift */,
 				B8A129FA2243554C00F4132D /* FirebaseService.swift */,
@@ -283,6 +286,7 @@
 				B87E33E22237DACC0063DE43 /* WikipediaService.swift in Sources */,
 				B87E33DB2237DACC0063DE43 /* CameraCity.swift in Sources */,
 				B87E33DE2237DACC0063DE43 /* DetailViewController.swift in Sources */,
+				B8A129FD224604C300F4132D /* WebViewController.swift in Sources */,
 				B87E33DA2237DACC0063DE43 /* WeatherData.swift in Sources */,
 				B87E33BE2237DA2B0063DE43 /* AppDelegate.swift in Sources */,
 				B8A129F92243553A00F4132D /* FirebaseData.swift in Sources */,

@@ -13,5 +13,6 @@ struct CameraCity {
     let lat: Double
     let lon: Double
     let cameraURL: String
+
     
 }

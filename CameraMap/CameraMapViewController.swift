@@ -62,8 +62,7 @@ class CameraMapViewController: UIViewController, MKMapViewDelegate {
             annotationView?.canShowCallout = true
         }
         
-        let extractedExpr = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-        annotationView?.pinTintColor = extractedExpr
+        annotationView?.pinTintColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         annotationView?.canShowCallout = false
         let showUserProfileGester = UITapGestureRecognizer()
         showUserProfileGester.addTarget(self, action:  #selector(showUserProfileMethod))
@@ -74,9 +73,18 @@ class CameraMapViewController: UIViewController, MKMapViewDelegate {
     @objc func showUserProfileMethod(sender: UITapGestureRecognizer) {
         let pin = sender.view as? MKAnnotationView
         
-        let detailVC: DetailViewController = DetailViewController()
-        detailVC.currentCity = pin!.annotation!.title as! String
-        present(detailVC, animated: true, completion: nil)
+//        let detailVC: DetailViewController = DetailViewController()
+//        detailVC.currentCity = pin!.annotation!.title as! String
+//        present(detailVC, animated: true, completion: nil)
+        let webVC: WebViewController = WebViewController()
+        webVC.currentCity = pin!.annotation!.title as! String
+        
+        //webVC.currentCity = pin!.annotation!.title as! String
+        present(webVC, animated: true, completion: nil)
+        
+        
+        
+        
       //  if let annotationView = (sender.view as? MKAnnotationView)?.annotation as? CustomPointAnnotation  {
             //performSegue(withIdentifier: "goDetail", sender: pin?.annotation?.title)
 //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
